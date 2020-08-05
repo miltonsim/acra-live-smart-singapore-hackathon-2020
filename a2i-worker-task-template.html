@@ -1,0 +1,29 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+    <crowd-classifier
+        name="Score"
+        header="Initial score"
+        categories="['Approve','Reject']"
+    />
+
+    <classification-target>
+        <p>Name: {{task.input.name}}</p>
+        <p>Phone Number: {{task.input.phone_number}}</p>
+        <p>Account Number: {{task.input.account_number}}</p>
+        <p>Amount: {{task.input.amount}}</p>
+        <p>Reason: {{task.input.reason}}</p>
+        <p>Outcome: {{task.input.outcome}}</p>
+        <p>Score: {{task.input.score}}</p>
+    </classification-target>
+        
+        <full-instructions header="Document Classification Instructions">
+        <p>Read the task carefully and inspect the document.</p>
+        <p>Choose the appropriate label that best suits the document.</p>
+        </full-instructions>
+
+        <short-instructions>
+        Please choose the correct category for the document
+        </short-instructions>
+        
+</crowd-form>
