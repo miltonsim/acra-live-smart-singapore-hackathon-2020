@@ -1,5 +1,5 @@
 
-<a  href="https://github.com/Xenonwizard/ACRA-Live-Smart"><img  src="https://drive.google.com/uc?export=view&id=1JmPW6yu3J_pRZGc7HGvjRiU_wvSglJcx"  height="400"  width="520"/></a>
+<a href="https://github.com/Xenonwizard/ACRA-Live-Smart"><img  src="./readme_resources/TeamPhoto.jpeg"  height="400"  width="520"/></a>
 
 # Live Smart Hackathon (Ree-Cloud)
 
