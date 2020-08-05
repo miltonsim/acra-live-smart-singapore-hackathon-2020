@@ -2,33 +2,21 @@
 
 <img  src="./readme_resources/TeamPhoto.jpeg"  height="400" />
 
-Members | Position
------- | -----
-Milton Sim | Top
-Eugene Foo | Center
-Ryan Lucas Ho | Center
-Elijah Chia | Bottom
-
 **Short Introduction**
 
->We are a team from Nanyang Polytechnic consisting of Ryan Ho, Eugene Foo, Milton Sim and Elijah Chia. We created an solution in AWS using  Sagemaker, Textract and A2I to automate waiver form processing for ACRA.
+> We are a team from Nanyang Polytechnic, consisting of Ryan Ho, Eugene Foo, Milton Sim and Elijah Chia, and we are excited to help leverage Amazon Web Service (AWS)'s technologies to solve ACRA's pain points.
 
 **Our Solution**
-> Our solution involves a serverless web application that is hosted in S3 which allows ACRA staff members to view case details and upload a scannned copy of their waiver process form into S3. A Lambda function will be triggered and leverage on Textract to extract text field data into DynamoDB. This would tigger a DynamoDB update stream and call another Lambda function to make a request to the Sagemaker endpoint for automatic decision making of cases. This solution also utilizes Augmented AI to produce a human review workflow for a private team of workers to validate the approval of forms if the Machine Learning model is not confident on the outcome. 
+>  Our serverless solution encompasses around the usage of Optical Character Recognition (OCR) and Artifical Intelligence (AI) where we are able to automate the refunding of manual form requests for ACRA. Thus reducing time, effort and human errors. 
 
 **Amazon Services Used**
-
-- SageMaker
-
-- Augmented AI (A2I)
-
-- Lambda
-
-- API Gateway
-
-- DynamoDB
-
-- Simple Storage Service (S3)
+- AWS Lambda
+- Amazon API Gateway
+- Amazon Augmented AI (Amazon A2I)
+- Amazon DynamoDB
+- Amazon S3
+- Amazon SageMaker
+- Amazon Textract
 
 ---
 
@@ -42,64 +30,52 @@ Elijah Chia | Bottom
 <img  src="./readme_resources/Request.png"  height="400"/><br/>
 
 *Hard Copy Form*
+- The customer submits the hard copy form to the ACRA staff
+- The staff scans and uploads the document to the staff website where it will be stored in S3
+- The uploading of the document to S3 will automatically trigger Lambda which will use Textract to extract the text elements from the document and stores this information in DynamoDB
 
-- Customer submits hard copy form to ACRA staff
-
-- Staff scans and uploads the document to the staff website where it will be stored in AWS S3
-
-- The uploading of the document to S3 triggers AWS Lambda and AWS Textract to extract text elements from the document and stores this information in AWS DynamoDB
-
-Online Form
-
-- Customer submits online form on the customer website
-
-- Form details are stored in Amazon DynamoDB
+*Online Form*
+- The customer submits online form through the customer website which is hosted on S3
+- The form details are stored in DynamoDB using API Gateway and Lambda
 
 *Helpdesk and Chatbot*
-
-- Customer can chat with chatbot which utilises AWS Lex
-
-- Customer can make enquiries to the helpdesk through AWS Connect
+- The customer can chat with the chatbot on the customer website which utilises Amazon Lex
+- The customer can make enquiries to the helpdesk through Amazon Connect
 
 **Review**
-
 <img  src="./readme_resources/Review.png" height="400"/><br/>
 
 *Decision Making Engine*
-
-- Once form details are added to AWS DynamoDB, AWS Lambda is automatically triggered where it will make use of Amazon SageMaker to determine if the case should be approved.
+- Once the form details are added to DynamoDB, Lambda is automatically triggered where it will make use of the SageMaker model to determine if the case should be approved.
+- If SageMaker is unable to decide, the request will be sent to A2I. The staff is then able to help decide. This information will be used to retrain the model, making it smarter. 
 
 *Dashboard*
+- The staff views the staff website which is hosted on S3
+- The website makes use of API Gateway and Lambda to retrieve the case records from DynamoDB
 
-- The staff views the staff website which is hosted on AWS S3
-
-- The website makes use of Amazon API Gateway and AWS Lambda to retrieve the case records from AWS DynamoDB
-
-Case status can be viewed (Approved, Rejected, Pending Review)
+A case status can be 
+1. Approved
+2. Rejected
+3. Pending Manual Review
+4. Pending Manual Refund
 
 **Refund/Reply**
 
 <img  src="./readme_resources/Refund-Reply.png" height="400"/><br/>
 
 *Customer Notification*
-
-When a case if approved or rejected, customers will be notified via email using AWS SES
+- When a case is approved or rejected, the customer will be notified via email using Lambda and Amazon SES
 
 *Refund*
-
-When a case is approved, AWS Lambda is triggered and submits a refund to the customer through the payment gateway
+- When a case is approved, Lambda will be triggered and submits a refund to the customer through the Payment Gateway
+- If the case requires manual refund, the staff has to manually refund the customer.
 
 **Record**
 
 <img  src="./readme_resources/Record.png" height="400"/><br/>
 
 *Excel Records*
-
-Staff requests to view the excel spreadsheet.
-
-This triggers Amazon API Gateway and AWS Lambda to retrieve records from AWS DynamoDB and export it as an excel spreadsheet
-
-Spreadsheet is stored in AWS S3 where it can be downloaded
+- After from viewing the cases through a dashboard, the staff can request to view an Excel spreadsheet where the records will be retrieved using API Gateway and Lambda from DynamoDB. It will then be exported to S3 and be automatically downloaded to the staff's computer. The downloading of records is secured through a pre-signed URL
 
 ---
 
