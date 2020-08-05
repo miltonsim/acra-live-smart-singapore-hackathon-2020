@@ -2,12 +2,7 @@ import boto3, uuid
 
 def lambda_handler(event, context):
     
-    dynamodb = boto3.resource(
-        'dynamodb',
-        aws_access_key_id="YOUR-ACCESS-KEY",
-        aws_secret_access_key="YOUR-SECRET-KEY",
-        region_name='YOUR-REGION'
-    )
+    dynamodb = boto3.resource('dynamodb')
     
     table = dynamodb.Table('DYNAMODB-TABLE')
 
