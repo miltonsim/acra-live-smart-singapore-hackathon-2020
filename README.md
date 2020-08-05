@@ -27,6 +27,7 @@
 <br/>
 
 **Request**
+
 <img  src="./readme_resources/Request.png"  height="400"/><br/>
 
 *Hard Copy Form*
@@ -43,6 +44,7 @@
 - The customer can make enquiries to the helpdesk through Amazon Connect
 
 **Review**
+
 <img  src="./readme_resources/Review.png" height="400"/><br/>
 
 *Decision Making Engine*
