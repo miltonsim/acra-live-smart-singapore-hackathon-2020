@@ -7,7 +7,18 @@
 > We are a team from Nanyang Polytechnic, consisting of Ryan Ho, Eugene Foo, Milton Sim and Elijah Chia, and we are excited to solve ACRA's pain points by leveraging on Amazon Web Service (AWS)'s technologies.
 
 **Our Solution**
->  Our serverless solution encompasses around the usage of Optical Character Recognition (OCR) and Artifical Intelligence (AI) where we are able to automate the refunding of manual form requests for ACRA. Thus reducing time, effort and human errors. 
+> Our proposed solution is an event-driven end-to-end solution, making form waivers a breeze. The system is able to handle from the upload of the form, all the way, to the refund process without any human intervention.
+>
+> The key features of our solution encompasses the usage of Optical Character Recognition (OCR) and Artificial Intelligence (AI) where we are able to automate the approval of the physical and online form requests. 
+>
+> By utilising AWS serverless services, we are able to reduce operational needs, allowing more focus on customer satisfaction. Hence, our architecture is inherently fault-tolerant and easily scalable.
+>
+> Both staff and customers will greatly benefit from the ease of use and seamless experience as many of the heavy lifting is now managed by AWS. Moreover, the staff is able to gain immediate insights into the cases statues, and with the automated processes, drastically reducing the turnaround time.
+>
+> In addition, our team has also made a strong emphasis to create a cost-effective solution for ACRA. Our current estimate puts the cost at a ballpark of less than $1 per form processed. 
+>
+> As a team, we hope these strategic features are able to greatly benefit ACRA by reducing the cost, time taken, effort required and potential human errors.
+
 
 **Amazon Services Used**
 - AWS Lambda
