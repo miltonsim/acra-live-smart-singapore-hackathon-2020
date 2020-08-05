@@ -20,11 +20,8 @@
 
 ---
 
-## OVERVIEW OF OUR ARCHITECTURE
-
-<br/>
+## Overview of our architecture 
 <img  src="./readme_resources/ACRA_Architecture.png" height="400"/> 
-<br/>
 
 **Request**
 
