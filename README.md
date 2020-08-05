@@ -1,7 +1,14 @@
-
-<a href="https://github.com/Xenonwizard/ACRA-Live-Smart"><img  src="./readme_resources/TeamPhoto.jpeg"  height="500"  width="520"/></a>
-
 # Live Smart Hackathon (Ree-Cloud)
+
+## Our Team - BLMNK 
+<img  src="./readme_resources/TeamPhoto.jpeg"  height="400" />
+
+Members | Position
+------ | -----
+Milton Sim | Top
+Eugene Foo | Center
+Ryan Lucas Ho | Center
+Elijah Chia | Bottom
 
 **Short Introduction**
 
@@ -29,11 +36,11 @@
 ## OVERVIEW OF OUR ARCHITECTURE
 
 <br/>
-<img  src="https://drive.google.com/uc?export=view&id=15fIEhtdbk6H7LzBVWdjs-I45NhwwI1ZU"/> 
+<img  src="./readme_resources/ACRA_Architecture.png" height="400"/> 
 <br/>
 
 **Request**
-<img  src="https://drive.google.com/uc?export=view&id=1OIvltuv7foSDCd6vsH6vPi9MxhBUpxuo"  height="400"/><br/>
+<img  src="./readme_resources/Request.png"  height="400"/><br/>
 
 *Hard Copy Form*
 
@@ -57,7 +64,7 @@ Online Form
 
 **Review**
 
-<img  src="https://drive.google.com/uc?export=view&id=1AMI2QFUC7IBy7R6ePVoxqSQNP4uZd1XU"  /><br/>
+<img  src="./readme_resources/Review.png" height="400"/><br/>
 
 *Decision Making Engine*
 
@@ -73,7 +80,7 @@ Case status can be viewed (Approved, Rejected, Pending Review)
 
 **Refund/Reply**
 
-<img  src="https://drive.google.com/uc?export=view&id=1Mbmarr9PPPDUM8m2XT_C052eHZCLTkNm"/><br/>
+<img  src="./readme_resources/Refund-Reply.png" height="400"/><br/>
 
 *Customer Notification*
 
@@ -85,7 +92,7 @@ When a case is approved, AWS Lambda is triggered and submits a refund to the cus
 
 **Record**
 
-<img  src="https://drive.google.com/uc?export=view&id=1fF7WSg6nUlfSUFfK6oU-owkGxiANjwgz"/><br/>
+<img  src="./readme_resources/Record.png" height="400"/><br/>
 
 *Excel Records*
 
@@ -94,33 +101,6 @@ Staff requests to view the excel spreadsheet.
 This triggers Amazon API Gateway and AWS Lambda to retrieve records from AWS DynamoDB and export it as an excel spreadsheet
 
 Spreadsheet is stored in AWS S3 where it can be downloaded
-
----
-
-## SETUP/USAGE/HOW TO
-
-These are the code resources that we created:
-
-[Lambda](backend/)
-
-[Website Dashboard](frontend/dashboard.html)
-
-[Website File Upload](frontend/upload_file.html)
-
-[A2i Worker Task Template](frontend/a2i-worker-task-template.html)
-
-<!-- https://github.com/Xenonwizard/ACRA-Live-Smart/tree/master/Lambda
-
-https://github.com/Xenonwizard/ACRA-Live-Smart/tree/master/S3-Website -->
-
-<!-- https://github.com/Xenonwizard/ACRA-Live-Smart/blob/master/a2i-worker-task-template.html -->
-
-Training/Test Data Used:
-
-[Training Data](project_resources/sagemaker-training-data.csv)
-<!-- https://github.com/Xenonwizard/ACRA-Live-Smart/blob/master/sagemaker-training-data.csv -->
-
-<!-- https://github.com/Xenonwizard/ACRA-Live-Smart/blob/master/Team%20Photo.jpeg -->
 
 ---
 
@@ -138,48 +118,21 @@ Training/Test Data Used:
 
 ### Setup
 
-We have already included everything for you but if there are issues:
+1. Clone this repository
+2. Train a Sagemaker model using [Autopilot](https://aws.amazon.com/getting-started/hands-on/create-machine-learning-model-automatically-sagemaker-autopilot/) and deploy it
+3. Create an [A2i](https://aws.amazon.com/blogs/machine-learning/object-detection-and-model-retraining-with-amazon-sagemaker-and-amazon-augmented-ai) human loop
+5. Create a Lambda function for each [backend file](backend/)
+    - Remember to include the DynamoDB table, A2i workflow ARN, S3 bucket location and Sagemaker endpoint in the python files
+6. Deploy the Website Dashboard and File Upload pages into AWS S3
 
-Please ensure that you have the following imports:
+## Resources
 
-```
+[Lambda](backend/)
 
-import boto3, csv, json, time, uuid
+[Website Dashboard](frontend/dashboard.html)
 
-```
+[Website File Upload](frontend/upload_file.html)
 
-Also ensure that you have called your resource every time you are coding.
+[A2i Worker Task Template](frontend/a2i-worker-task-template.html)
 
-For example 1:
-
-```
-
-s3_client = boto3.client('s3')
-
-textract_client = boto3.client('textract')
-
-dynamodb_client = boto3.resource('dynamodb')
-
-```
-
-For example 2:
-
-```
-
-dynamodb = boto3.resource(
-
-'dynamodb',
-
-aws_access_key_id="**********",
-
-aws_secret_access_key="*************",
-
-region_name='ap-southeast-1'
-
-```
-
-For Autopilot Setup refer to the tutorial<a  href="https://aws.amazon.com/getting-started/hands-on/create-machine-learning-model-automatically-sagemaker-autopilot/"  target="_blank"> here </a></p>
-
-For the A2I worker template, you can refer to the "Example Example of an automated classification template." example on this <a  href="https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-custom-templates.html">webpage</a>
-
-For a reference on the human loop and A2i that needs to be made, you can refer to <a  href="https://aws.amazon.com/blogs/machine-learning/object-detection-and-model-retraining-with-amazon-sagemaker-and-amazon-augmented-ai/">here</a>. However do note that you will need to make the appropriate changes as this is an <b>object detection</b> example but what we are doing is <b>document processing</b>.
+[Training Data](project_resources/sagemaker-training-data.csv)
