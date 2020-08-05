@@ -97,7 +97,7 @@ A case status can be
 3. Create an [A2i](https://aws.amazon.com/blogs/machine-learning/object-detection-and-model-retraining-with-amazon-sagemaker-and-amazon-augmented-ai) human loop
 5. Create a Lambda function for each [backend file](backend/)
     - Remember to include the DynamoDB table, A2i workflow ARN, S3 bucket location and Sagemaker endpoint in the python files
-6. Deploy the Website Dashboard and File Upload pages into AWS S3
+6. Deploy the Website Dashboard and File Upload pages into Amazon S3
 
 ## Resources
 
