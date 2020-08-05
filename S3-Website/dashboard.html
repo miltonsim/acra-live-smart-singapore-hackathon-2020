@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+    <title>ACRA Portal</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js"></script>
+
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+    <a href="#" class="brand-logo">ACRA Dashboard</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="./S3-Uploader.html">Upload Files</a></li>
+    </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <br>
+    <br>
+    <div class="col s10 offset-s1">
+    <div class="card">
+        <div class="card-content">
+        <span class="card-title">Cases&nbsp;&nbsp;&nbsp;<a class="btn btn-small green right" href="" id="download" download>Download CSV</a></span>
+        <table id="files" class="display hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone No.</th>
+                    <th>Account No.</th>
+                    <th>Amount</th>
+                    <th>Reason</th>
+                    <th>Stage</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+$(document).ready(function(){
+
+    $.ajax({
+    type: "GET",
+    url: "https://wxlsz1mhua.execute-api.ap-southeast-1.amazonaws.com/dev/get-dynamodb-table",
+    success: function (data) {
+        console.log(data.body);
+        let trHTML = ""
+        for (var i in data.body) {
+            if(data.body[i].Stage == "Rejected"){
+                trHTML += `<tr style='background-color:#ffffff; color:red'><td style='background-color:#ffffff'>${data.body[i].Name}</td><td>${data.body[i].Phone}</td><td>${data.body[i].Account}</td><td>${data.body[i].Amount}</td><td>${data.body[i].Reason}</td><td>${data.body[i].Stage}</td></tr>`
+            }
+            else if(data.body[i].Stage == "Approved"){
+                trHTML += `<tr style='background-color:#ffffff; color:green'><td style='background-color:#ffffff'>${data.body[i].Name}</td><td>${data.body[i].Phone}</td><td>${data.body[i].Account}</td><td>${data.body[i].Amount}</td><td>${data.body[i].Reason}</td><td>${data.body[i].Stage}</td></tr>`
+            }
+            else{
+                trHTML += `<tr style='background-color:#ffffff;'><td style='background-color:#ffffff'>${data.body[i].Name}</td><td>${data.body[i].Phone}</td><td>${data.body[i].Account}</td><td>${data.body[i].Amount}</td><td>${data.body[i].Reason}</td><td>${data.body[i].Stage}</td></tr>`
+            }
+        }
+
+        $('#files tbody').append(trHTML);
+        $('#files').DataTable({
+            "paging": true,
+            "lengthChange": false
+        });
+        
+    } 
+    });
+
+    $.ajax({
+    type: "GET",
+    url: "https://wxlsz1mhua.execute-api.ap-southeast-1.amazonaws.com/dev/get-csv",
+    success: function (data) {
+
+        $("#download").attr("href", data);
+    } 
+    });
+
+
+    setTimeout(function(){
+    window.location.reload(1);
+    }, 60000);
+
+});
+</script>
+</html>
