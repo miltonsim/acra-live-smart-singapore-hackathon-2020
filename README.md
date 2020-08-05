@@ -4,7 +4,7 @@
 
 **Short Introduction**
 
-> We are a team from Nanyang Polytechnic, consisting of Ryan Ho, Eugene Foo, Milton Sim and Elijah Chia, and we are excited to help leverage Amazon Web Service (AWS)'s technologies to solve ACRA's pain points.
+> We are a team from Nanyang Polytechnic, consisting of Ryan Ho, Eugene Foo, Milton Sim and Elijah Chia, and we are excited to solve ACRA's pain points by leveraging on Amazon Web Service (AWS)'s technologies.
 
 **Our Solution**
 >  Our serverless solution encompasses around the usage of Optical Character Recognition (OCR) and Artifical Intelligence (AI) where we are able to automate the refunding of manual form requests for ACRA. Thus reducing time, effort and human errors. 
