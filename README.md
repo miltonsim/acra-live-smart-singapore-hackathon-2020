@@ -1,6 +1,5 @@
 # Live Smart Hackathon (Ree-Cloud)
 
-## Our Team - BLMNK 
 <img  src="./readme_resources/TeamPhoto.jpeg"  height="400" />
 
 Members | Position
